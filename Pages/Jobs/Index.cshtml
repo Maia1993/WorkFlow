@@ -1,0 +1,10 @@
+@page
+@model WorkFlow.Pages.Jobs.IndexModel
+@{ ViewData["Title"] = "Trabalhos"; }
+<section class="page-heading"><div><p class="eyebrow">OPERAÇÕES</p><h1>Trabalhos</h1><p>Controle responsáveis, execução, prazos e rentabilidade.</p></div><button class="primary">+ Novo trabalho</button></section>
+<section class="kanban">
+@foreach(var group in Model.Jobs.GroupBy(x => x.Status)){
+<div class="kanban-column"><h2>@group.Key <span>@group.Count()</span></h2>
+@foreach(var job in group){<article class="job-card"><small>@job.Number</small><h3>@job.Description</h3><p>@job.Customer</p><div class="progress"><i style="width:@job.Progress%"></i></div><footer><span>@job.Progress%</span><span>@job.DueDate.ToString("dd MMM")</span></footer></article>}
+</div>}
+</section>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - WorkFlow</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" asp-page="/Index"><span>W</span>WorkFlow</a>
+        <nav>
+            <a class="@(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "active" : "")" asp-page="/Index">Visão geral</a>
+            <a class="@(ViewContext.RouteData.Values["page"]?.ToString()?.StartsWith("/Quotes") == true ? "active" : "")" asp-page="/Quotes/Index">Orçamentos</a>
+            <a class="@(ViewContext.RouteData.Values["page"]?.ToString()?.StartsWith("/Jobs") == true ? "active" : "")" asp-page="/Jobs/Index">Trabalhos</a>
+        </nav>
+        <div class="sidebar-note"><strong>Empresa Demo</strong><small>Ambiente de demonstração</small></div>
+    </aside>
+    <main class="content">
+        <header class="topbar"><div><strong>Gestão operacional</strong><span>Orçamentos e trabalhos num só lugar</span></div><div class="avatar">GM</div></header>
+        @RenderBody()
+    </main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Visão geral";
+}
+<section class="page-heading">
+    <div><p class="eyebrow">SEXTA-FEIRA, @DateTime.Today.ToString("dd 'DE' MMMM").ToUpper()</p><h1>Bom dia, Guilherme</h1><p>Acompanhe os orçamentos e trabalhos que precisam da sua atenção.</p></div>
+    <a class="primary" asp-page="/Quotes/Index">+ Novo orçamento</a>
+</section>
+<section class="metrics">
+    <article><span>Orçamentos em aberto</span><strong>@Model.OpenQuoteValue.ToString("C0", new System.Globalization.CultureInfo("pt-PT"))</strong><small>3 propostas aguardam decisão</small></article>
+    <article><span>Trabalhos ativos</span><strong>@Model.ActiveJobs.Count</strong><small>1 trabalho requer atenção</small></article>
+    <article><span>Orçamentos aprovados</span><strong>@Model.ApprovedQuotes</strong><small>Este mês</small></article>
+    <article><span>Margem atual</span><strong>@Model.CurrentMargin.ToString("C0", new System.Globalization.CultureInfo("pt-PT"))</strong><small>Sobre trabalhos com custos</small></article>
+</section>
+<section class="panel">
+    <div class="panel-title"><div><h2>Trabalhos em curso</h2><p>Progresso, prazos e custos em tempo real.</p></div><a asp-page="/Jobs/Index">Ver todos</a></div>
+    <div class="job-list">
+    @foreach (var job in Model.ActiveJobs)
+    {
+        <article class="job-row">
+            <div><span class="job-number">@job.Number</span><strong>@job.Description</strong><small>@job.Customer · @job.Responsible</small></div>
+            <div class="progress-wrap"><span>@job.Progress%</span><div class="progress"><i style="width:@job.Progress%"></i></div></div>
+            <div><small>Prazo</small><strong class="@(job.DueDate < DateTime.Today ? "danger" : "")">@job.DueDate.ToString("dd MMM")</strong></div>
+            <span class="badge @job.Status.ToString().ToLower()">@(job.Status == JobStatus.Waiting ? "Bloqueado" : "Em curso")</span>
+        </article>
+    }
+    </div>
+</section>

@@ -1,0 +1,7 @@
+@page
+@model WorkFlow.Pages.Quotes.IndexModel
+@{ ViewData["Title"] = "Orçamentos"; }
+<section class="page-heading"><div><p class="eyebrow">COMERCIAL</p><h1>Orçamentos</h1><p>Crie propostas, acompanhe decisões e transforme aprovações em trabalhos.</p></div><button class="primary">+ Novo orçamento</button></section>
+<section class="panel table-panel"><table><thead><tr><th>Número</th><th>Cliente e descrição</th><th>Validade</th><th>Valor</th><th>Estado</th></tr></thead><tbody>
+@foreach(var quote in Model.Quotes){<tr><td><strong>@quote.Number</strong></td><td><strong>@quote.Customer</strong><small>@quote.Description</small></td><td>@quote.ValidUntil.ToString("dd/MM/yyyy")</td><td><strong>@quote.Total.ToString("C2", new System.Globalization.CultureInfo("pt-PT"))</strong></td><td><span class="badge @quote.Status.ToString().ToLower()">@quote.Status</span></td></tr>}
+</tbody></table></section>
