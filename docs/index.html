@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demonstração do WorkFlow — orçamentos, encomendas e trabalhos.">
+  <title>WorkFlow — Demonstração</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside>
+    <a class="brand" href="#"><span>W</span><b>WorkFlow</b></a>
+    <p class="label">OPERAÇÃO</p>
+    <nav>
+      <button class="nav active" data-view="dashboard">▦ Visão geral</button>
+      <button class="nav" data-view="quotes">◫ Orçamentos <em>3</em></button>
+      <button class="nav" data-view="jobs">✓ Trabalhos <em>4</em></button>
+    </nav>
+    <div class="demo-note"><b>DEMONSTRAÇÃO</b><p>Dados fictícios para apresentação.</p></div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow">DEMONSTRAÇÃO WORKFLOW</p><h1 id="title">Bom dia, Guilherme</h1><p id="subtitle">Acompanhe os orçamentos e trabalhos que precisam da sua atenção.</p></div><button class="primary" id="newButton">+ Novo orçamento</button></header>
+    <section id="dashboard" class="view active">
+      <div class="metrics">
+        <article><span>Orçamentos em aberto</span><strong>12 850 €</strong><small>3 propostas aguardam decisão</small></article>
+        <article><span>Trabalhos ativos</span><strong>4</strong><small>1 trabalho requer atenção</small></article>
+        <article><span>Orçamentos aprovados</span><strong>8</strong><small>Este mês</small></article>
+        <article><span>Margem prevista</span><strong>7 420 €</strong><small>Sobre trabalhos em curso</small></article>
+      </div>
+      <section class="panel"><div class="panel-head"><div><h2>Trabalhos em curso</h2><p>Progresso, prazos e custos em tempo real.</p></div><button class="link" data-go="jobs">Ver todos</button></div><div id="dashboardJobs"></div></section>
+    </section>
+    <section id="quotes" class="view"><section class="panel"><div class="panel-head"><div><h2>Orçamentos</h2><p>Responda aos pedidos rapidamente e acompanhe cada decisão.</p></div><button class="primary small" id="quoteButton">+ Novo orçamento</button></div><div id="quoteList" class="table"></div></section></section>
+    <section id="jobs" class="view"><section class="panel"><div class="panel-head"><div><h2>Ordens de trabalho</h2><p>Planeamento, responsáveis, entregas e atrasos numa única vista.</p></div></div><div id="jobList"></div></section></section>
+  </main>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
